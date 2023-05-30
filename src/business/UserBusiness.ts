@@ -1,4 +1,6 @@
 import { UserDatabase } from "../database/UserDatabase"
+import { BadRequestError } from "../errors/BadRequestError"
+import { NotFoundError } from "../errors/NotFoundError"
 import { User } from "../models/User"
 import { UserDB } from "../types"
 
@@ -22,19 +24,19 @@ export class UserBusiness {
         const { id, name, email, password } = input
 
         if (typeof id !== "string") {
-            throw new Error("'id' deve ser string")
+            throw new BadRequestError("'id' deve ser string")
         }
 
         if (typeof name !== "string") {
-            throw new Error("'name' deve ser string")
+            throw new NotFoundError("'name' deve ser string")
         }
 
         if (typeof email !== "string") {
-            throw new Error("'email' deve ser string")
+            throw new BadRequestError("'email' deve ser string")
         }
 
         if (typeof password !== "string") {
-            throw new Error("'password' deve ser string")
+            throw new BadRequestError("'password' deve ser string")
         }
 
         const userDatabase = new UserDatabase()
